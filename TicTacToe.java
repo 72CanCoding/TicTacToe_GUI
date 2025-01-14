@@ -15,7 +15,7 @@ public class TicTacToe {
         frame.setLayout(new GridLayout(3, 3));
 
         buttons = new JButton[3][3];
-        isXTurn = true; // X starts the game
+        isXTurn = true; 
 
         initializeButtons();
 
@@ -30,12 +30,12 @@ public class TicTacToe {
                 buttons[row][col] = button;
                 frame.add(button);
 
-                // Add action listener to each button
+              
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (!button.getText().isEmpty()) {
-                            return; // Button already clicked
+                            return; 
                         }
 
                         if (isXTurn) {
@@ -44,7 +44,7 @@ public class TicTacToe {
                             button.setText("O");
                         }
 
-                        isXTurn = !isXTurn; // Switch turn
+                        isXTurn = !isXTurn; 
                         checkWinner();
                     }
                 });
@@ -53,20 +53,20 @@ public class TicTacToe {
     }
 
     private void checkWinner() {
-        // Check rows, columns, and diagonals for a winner
+       
         for (int i = 0; i < 3; i++) {
-            // Check rows
+           
             if (checkLine(buttons[i][0], buttons[i][1], buttons[i][2])) return;
 
-            // Check columns
+          
             if (checkLine(buttons[0][i], buttons[1][i], buttons[2][i])) return;
         }
 
-        // Check diagonals
+       
         if (checkLine(buttons[0][0], buttons[1][1], buttons[2][2])) return;
         if (checkLine(buttons[0][2], buttons[1][1], buttons[2][0])) return;
 
-        // Check for draw
+        
         if (isDraw()) {
             JOptionPane.showMessageDialog(frame, "It's a draw!");
             resetBoard();
